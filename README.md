@@ -1,59 +1,125 @@
-# SmartPosDashboard
+# Smart POS Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.26.
+## Project Architecture
 
-## Development server
+The project follows a feature-based architecture.
 
-To start a local development server, run:
+Each feature is self-contained and includes:
+
+- Pages
+- Components
+- Models
+- Services (Data Access)
+
+Shared components and services are placed under the `shared` folder for reusability.
+
+---
+
+## Folder Structure
+
+```text
+src/
+│
+├── core/
+│
+├── shared/
+│   ├── components/
+│   ├── services/
+│   └── models/
+│
+├── features/
+│   ├── orders/
+│   ├── products/
+│   ├── kitchen/
+│   └── ai-assistant/
+│
+├── layouts/
+│
+└── assets/
+```
+
+---
+
+## Design Decisions
+
+- Standalone Components were used.
+- Feature-based architecture improves scalability.
+- Shared UI components reduce duplicated code.
+- Services handle business logic while components focus on presentation.
+- Mock API (`json-server`) is used to simulate backend behavior.
+
+---
+
+## State Management Approach
+
+State is managed using **RxJS BehaviorSubject**.
+
+Each feature exposes observable streams.
+
+This keeps the UI reactive without introducing external state management libraries.
+
+---
+
+## Performance Optimizations
+
+- `ChangeDetectionStrategy.OnPush`
+- Debounced search input
+- `trackBy` in `ngFor`
+- Shared reusable components
+- Optimistic UI updates
+- Skeleton loading
+- Async data streams
+
+---
+
+## Assumptions
+
+- Backend is simulated using `json-server`.
+- AI recommendations are simulated.
+- WebSocket updates are simulated.
+
+---
+
+## Known Limitations
+
+- No authentication.
+- No real notification service.
+
+---
+
+## Future Improvements
+
+- Integrate with a real backend.
+- Use IndexedDB for the offline queue.
+- Add authentication & roles.
+- Add unit and integration tests.
+
+---
+
+## Installation
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the mock backend:
+
+```bash
+npm run mock-api
+```
+
+Run the Angular application:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Mock Backend
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Mock dataset: `db.json`
+- Start server: `npm run mock-api`
+- Postman collection: `postman/Smart POS Dashboard.postman_collection.json`
