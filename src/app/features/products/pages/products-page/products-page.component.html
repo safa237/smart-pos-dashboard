@@ -1,0 +1,125 @@
+<section class="products-page">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">Product catalog</p>
+      <h1>Products</h1>
+      <p class="subtitle">Search your menu, filter by category, and keep your top items visible.</p>
+    </div>
+
+    <div class="summary-card">
+      <span class="summary-label">Available now</span>
+      <strong>{{ filteredProducts.length }} items</strong>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <app-search-input
+
+    placeholder="Search Products"
+
+    [suggestions]="productNames"
+
+    (search)="onSearch($event)">
+
+</app-search-input>
+
+    <div class="category-strip">
+      <button
+        *ngFor="let category of categories"
+        type="button"
+        [class.active]="category === selectedCategory"
+        (click)="selectCategory(category)"
+      >
+        {{ category }}
+      </button>
+    </div>
+  </div>
+
+  <div class="products-grid" *ngIf="filteredProducts.length; else emptyState">
+    <article class="product-card" *ngFor="let product of filteredProducts">
+
+  <div class="product-top">
+    <span class="badge">{{ product.badge }}</span>
+
+    <span
+      class="stock"
+      [class.low]="product.stock < 10">
+
+      {{ product.stock }} left
+
+    </span>
+  </div>
+
+  <div class="product-icon">
+    <i [class]="product.icon"></i>
+  </div>
+
+  <h3>{{ product.name }}</h3>
+
+  <p>{{ product.description }}</p>
+
+  <div class="product-meta">
+
+    <div class="rating">
+      <i class="fa-solid fa-star"></i>
+      {{ product.rating }}
+    </div>
+
+    <div class="price">
+
+      {{ product.price | currency }}
+
+    </div>
+
+  </div>
+
+  @if(product.pending || product.syncStatus === 'syncing'){
+
+    <div class="pending-sync">
+
+      <i
+        class="fa-solid"
+        [class.fa-clock]="product.syncStatus !== 'syncing'"
+        [class.fa-spinner]="product.syncStatus === 'syncing'"
+        [class.fa-spin]="product.syncStatus === 'syncing'"
+      ></i>
+
+      {{ product.syncStatus === 'syncing' ? 'Syncing...' : 'Pending Sync' }}
+
+    </div>
+
+  }
+
+  <button
+    class="btn btn-primary w-100 mt-3"
+    (click)="openPriceDialog(product)">
+
+    Update Price
+
+  </button>
+
+</article>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <i class="fa-solid fa-face-frown"></i>
+      <h3>No products found</h3>
+      <p>Try a different search term or category.</p>
+    </div>
+  </ng-template>
+</section>
+
+<app-update-product
+
+*ngIf="selectedProduct"
+
+[product]="selectedProduct"
+
+[isOpen]="showDialog"
+
+(close)="closeDialog()"
+
+(save)="updatePrice($event)">
+
+</app-update-product>

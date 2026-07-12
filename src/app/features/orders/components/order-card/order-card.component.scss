@@ -1,0 +1,212 @@
+.order-card {
+    background: #ffffff;
+    border-radius: 12px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+        
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #2563eb, #3b82f6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .card-body {
+        padding: 16px !important;
+    }
+
+    .card-title {
+        font-size: 15px;
+        letter-spacing: 0.3px;
+    }
+
+    .customer-info {
+        font-size: 14px;
+        
+        i {
+            width: 18px;
+            text-align: center;
+        }
+    }
+
+    .badge {
+        padding: 6px 12px;
+        font-weight: 500;
+        font-size: 12px;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+
+        i {
+            font-size: 10px;
+        }
+    }
+
+    .order-meta {
+        font-size: 13px;
+    }
+
+    // Priority badges
+    .priority-high {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+
+    .priority-medium {
+        background: #fef3c7;
+        color: #d97706;
+    }
+
+    .priority-low {
+        background: #dbeafe;
+        color: #2563eb;
+    }
+
+    // Status badges
+    .status-received {
+        background: #dbeafe;
+        color: #2563eb;
+    }
+
+    .status-preparing {
+        background: #fef3c7;
+        color: #d97706;
+    }
+
+    .status-ready {
+        background: #d1fae5;
+        color: #059669;
+    }
+
+    .status-delivered {
+        background: #ede9fe;
+        color: #7c3aed;
+    }
+
+    .status-completed {
+        background: #e5e7eb;
+        color: #4b5563;
+    }
+
+    // Responsive
+    @media (max-width: 768px) {
+        .card-title {
+            font-size: 14px;
+        }
+
+        .card-body {
+            padding: 14px !important;
+        }
+
+        .customer-info {
+            font-size: 13px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .card-title {
+            font-size: 13px;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 4px 10px;
+        }
+    }
+}
+.order-card{
+
+    position: relative;
+
+}
+
+.ai-btn{
+
+    width:34px;
+
+    height:34px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f3f0ff;
+
+    color:#6d28d9;
+
+    transition:.2s;
+
+}
+
+.ai-btn:hover{
+
+    background:#6d28d9;
+
+    color:white;
+
+}
+
+.ai-popup{
+
+    position:absolute;
+
+    top:50px;
+
+    right:12px;
+
+    width:250px;
+
+    background:white;
+
+    border-radius:14px;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.15);
+
+    padding:15px;
+
+    z-index:100;
+
+}
+
+.ai-header{
+
+    font-weight:600;
+
+    color:#6d28d9;
+
+    margin-bottom:12px;
+
+}
+
+.loading{
+    color:#2563eb;
+}
+
+.streaming{
+    color:#7c3aed;
+}
+
+.success{
+    color:#16a34a;
+}
+
+.error{
+    color:#dc2626;
+}

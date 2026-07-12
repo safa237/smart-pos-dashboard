@@ -1,0 +1,103 @@
+@if(kitchenStatus$ | async; as kitchen){
+
+<div class="kitchen-dashboard">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h2>Kitchen Load Monitor</h2>
+            <p>Monitor kitchen workload and its impact on orders in real time.</p>
+        </div>
+        <div class="live-indicator">
+            <span class="dot"></span>
+            Live
+        </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+
+        <div class="stat-card primary">
+            <div class="stat-icon">
+                <i class="fas fa-fire"></i>
+            </div>
+            <div class="stat-info">
+                <span class="label">Kitchen Load</span>
+                <div class="stat-value">
+                    <h2>{{ kitchen.load }}</h2>
+                    <span class="workload" [class]="getWorkloadClass(kitchen.workload)">
+                        {{ kitchen.workload }}%
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card warning">
+            <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-info">
+                <span class="label">Preparing Orders</span>
+                <h2>{{ kitchen.preparingOrders }}</h2>
+            </div>
+        </div>
+
+        <div class="stat-card success">
+            <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-info">
+                <span class="label">Ready Orders</span>
+                <h2>{{ kitchen.readyOrders }}</h2>
+            </div>
+        </div>
+
+        <div class="stat-card danger">
+            <div class="stat-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="stat-info">
+                <span class="label">Delayed Orders</span>
+                <h2>{{ kitchen.delayedOrders }}</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Cards -->
+    <div class="cards-row">
+
+        <!-- Kitchen Capacity -->
+        <div class="card capacity-card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Kitchen Capacity</h3>
+                </div>
+                <span class="workload-percentage" [class]="getWorkloadClass(kitchen.workload)">
+                    {{ kitchen.workload }}%
+                </span>
+            </div>
+            <div class="progress-wrapper">
+                <div class="progress">
+                    <div class="progress-fill" 
+                         [style.width.%]="kitchen.workload"
+                         [class]="getWorkloadClass(kitchen.workload)">
+                    </div>
+                </div>
+                <div class="progress-labels">
+                    <span>0%</span>
+                    <span>50%</span>
+                    <span>100%</span>
+                </div>
+            </div>
+            <div class="capacity-status" [class]="getWorkloadClass(kitchen.workload)">
+                <i class="fas" [class]="getStatusIcon(kitchen.workload)"></i>
+                {{ getStatusText(kitchen.workload) }}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+}

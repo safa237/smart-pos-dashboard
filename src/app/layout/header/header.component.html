@@ -1,0 +1,81 @@
+<header class="header">
+  <div class="header-content">
+    
+    <!-- Left: Menu Toggle + Brand -->
+    <div class="header-left">
+      <button class="menu-btn" (click)="onToggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="brand">
+        <i class="fa-solid fa-utensils"></i>
+        <span>FoodHub</span>
+      </div>
+    </div>
+
+    <!-- Right: Notifications + User -->
+    <div class="header-right">
+      
+      <!-- Notifications -->
+      <div class="notification-wrapper">
+        <button 
+          class="notification-btn"
+          (click)="toggleNotifications()"
+          [class.has-badge]="getUnreadCount() > 0"
+        >
+          <i class="fa-regular fa-bell"></i>
+          <span class="badge" *ngIf="getUnreadCount() > 0">
+            {{ getUnreadCount() }}
+          </span>
+        </button>
+
+        <!-- Notification Dropdown -->
+        <div class="notification-dropdown" *ngIf="isNotificationOpen">
+          <div class="dropdown-header">
+            <h4>Notifications</h4>
+            <span class="unread-count" *ngIf="getUnreadCount() > 0">
+              {{ getUnreadCount() }} new
+            </span>
+          </div>
+
+          <div class="dropdown-body">
+            <div 
+              class="notification-item"
+              *ngFor="let notif of notifications"
+              [class.unread]="!notif.isRead"
+            >
+              <div class="notif-icon">
+                <i class="fa-regular fa-bell"></i>
+              </div>
+              <div class="notif-content">
+                <div class="notif-title">{{ notif.title }}</div>
+                <div class="notif-message">{{ notif.message }}</div>
+                <div class="notif-time">
+                  <i class="fa-regular fa-clock"></i>
+                  {{ notif.time }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown-footer">
+            <a href="/notifications" class="view-all">View All</a>
+          </div>
+        </div>
+      </div>
+
+     <div class="user-profile">
+
+  <div class="avatar">
+    A
+  </div>
+
+  <div class="user-info">
+    <span class="user-name">Admin</span>
+    <span class="user-role">Administrator</span>
+  </div>
+
+</div>
+
+    </div>
+  </div>
+</header>

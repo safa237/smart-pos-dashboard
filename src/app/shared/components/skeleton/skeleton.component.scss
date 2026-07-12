@@ -1,0 +1,144 @@
+.skeleton-page{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+.skeleton-card{
+
+    background:#fff;
+
+    border-radius:16px;
+
+    padding:20px;
+
+    border:1px solid #ececec;
+
+    box-shadow:0 4px 18px rgba(0,0,0,.05);
+
+}
+
+.skeleton-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.skeleton{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#edf1f5;
+
+    border-radius:8px;
+
+}
+
+.skeleton::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    transform:translateX(-100%);
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.75),
+        transparent
+    );
+
+    animation:shimmer 1.4s infinite;
+
+}
+
+.skeleton-title{
+
+    width:120px;
+
+    height:22px;
+
+}
+
+.skeleton-badge{
+
+    width:70px;
+
+    height:24px;
+
+    border-radius:30px;
+
+}
+
+.skeleton-line{
+
+    height:14px;
+
+    margin-bottom:12px;
+
+}
+
+.w-75{
+
+    width:75%;
+
+}
+
+.w-50{
+
+    width:50%;
+
+}
+
+.skeleton-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:24px;
+
+}
+
+.skeleton-status{
+
+    width:90px;
+
+    height:18px;
+
+}
+
+.skeleton-price{
+
+    width:60px;
+
+    height:22px;
+
+}
+
+@keyframes shimmer{
+
+    100%{
+
+        transform:translateX(100%);
+
+    }
+
+}

@@ -1,0 +1,21 @@
+<div class="column" [class]="'column-' + status">
+    <div class="column-header">
+        <h3 class="mb-0">
+            {{ title }}
+            <span class="count ms-2">{{ orders.length }}</span>
+        </h3>
+    </div>
+
+    <div class="column-body" [class.has-orders]="orders.length > 0">
+        @if (orders.length > 0) {
+            @for (order of orders; track order.id) {
+                <app-order-card [order]="order"></app-order-card>
+            }
+        } @else {
+            <div class="empty-state">
+                <i class="fas fa-inbox"></i>
+                <p class="mb-0">No orders</p>
+            </div>
+        }
+    </div>
+</div>

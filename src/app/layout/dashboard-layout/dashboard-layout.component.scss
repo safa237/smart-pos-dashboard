@@ -1,0 +1,55 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 240px; 
+  background: #f6f7fb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.overlay {
+  display: none;
+}
+
+// ============== RESPONSIVE ==============
+@media (max-width: 991px) {
+  .main-content {
+    margin-left: 0 !important; // Remove margin on mobile
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  .overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Extra small devices
+@media (max-width: 576px) {
+  .page-content {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,54 @@
+<!-- Overlay for mobile -->
+<div class="sidebar-overlay" [class.active]="isOpen" (click)="close()"></div>
+
+<nav class="sidebar" [class.open]="isOpen">
+  <!-- Header -->
+  <div class="sidebar-header">
+    <button class="close-btn" (click)="close()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    
+    <a href="/" class="logo-container">
+      <div class="logo-icon">
+        <i class="fa-solid fa-utensils"></i>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">FoodHub</span>
+        <span class="brand-sub">Management</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Menu -->
+  <ul class="menu">
+    <li class="menu-label">Main Menu</li>
+    
+    <li *ngFor="let item of menuItems">
+      <a 
+        [routerLink]="item.route" 
+        routerLinkActive="active"
+        [class.active]="activeItem === item.title"
+        (click)="setActive(item.title)"
+      >
+        <span class="menu-icon">
+          <i [class]="item.icon"></i>
+        </span>
+        
+        <span class="menu-text">
+          {{ item.title }}
+        </span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Logout -->
+  <div class="logout">
+    <button class="logout-btn">
+      <span class="logout-content">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+      </span>
+      <i class="fa-solid fa-arrow-right logout-icon"></i>
+    </button>
+  </div>
+</nav>

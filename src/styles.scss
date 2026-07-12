@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --sidebar-bg: #0f172a;
+  --sidebar-secondary: #1e293b;
+
+  --primary: #3b82f6;
+  --primary-light: #dbeafe;
+
+  --text: #ffffff;
+  --text-muted: #cbd5e1;
+
+  --border: rgba(255, 255, 255, .08);
+  --hover: rgba(255, 255, 255, .06);
+
+  --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+}
+
+
+
+
+// Import Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Smooth scrolling
+* {
+    scroll-behavior: smooth;
+}
+
+// Card animations
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.order-card {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+// Scrollbar global styling
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}

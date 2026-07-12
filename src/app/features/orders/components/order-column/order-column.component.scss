@@ -1,0 +1,151 @@
+.column {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    // إزالة أي ارتفاع ثابت
+    min-height: 200px; // حد أدنى فقط
+    // إزالة max-height أو جعلها كبيرة جداً
+    max-height: none; // إلغاء الحد الأقصى
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    // Status-specific styles
+    &.column-received {
+        border-top: 4px solid #2563eb;
+    }
+
+    &.column-preparing {
+        border-top: 4px solid #f59e0b;
+    }
+
+    &.column-ready {
+        border-top: 4px solid #10b981;
+    }
+
+    &.column-delivered {
+        border-top: 4px solid #8b5cf6;
+    }
+
+    &.column-completed {
+        border-top: 4px solid #6b7280;
+    }
+
+    .column-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 18px;
+        background: #ffffff;
+        border-bottom: 1px solid #e2e8f0;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        flex-shrink: 0;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+
+            .count {
+                min-width: 28px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: #2563eb;
+                color: #fff;
+                font-size: 13px;
+                font-weight: 600;
+                padding: 0 8px;
+            }
+        }
+    }
+
+    .column-body {
+        flex: 1;
+        padding: 16px;
+        overflow-y: auto; // Keep scroll for many items
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        // عندما يكون فيه اوردرات، يأخذ ارتفاع تلقائي
+        &:has(.order-card) {
+            overflow-y: visible; // إلغاء السكرول الداخلي
+            height: auto; // ارتفاع تلقائي
+        }
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 20px;
+        }
+
+        .empty-state {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #94a3b8;
+            text-align: center;
+            min-height: 150px;
+
+            i {
+                font-size: 34px;
+                margin-bottom: 12px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    // Responsive
+    @media (max-width: 768px) {
+        min-height: 150px;
+        
+        .column-header {
+            padding: 12px 15px;
+            
+            h3 {
+                font-size: 15px;
+            }
+        }
+        
+        .column-body {
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        min-height: 120px;
+        
+        .column-header {
+            padding: 10px 12px;
+            
+            h3 {
+                font-size: 14px;
+            }
+        }
+        
+        .column-body {
+            padding: 10px;
+            gap: 12px;
+        }
+    }
+}

@@ -1,0 +1,117 @@
+@if(isOpen){
+
+<div class="ai-overlay" (click)="close.emit()">
+
+    <div class="ai-modal" (click)="$event.stopPropagation()">
+
+        <div class="modal-header">
+
+            <div class="title">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <span>AI Assistant</span>
+
+            </div>
+
+            <button
+                class="btn-close"
+                (click)="close.emit()">
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div class="order-info">
+
+                <div>
+                    <strong>Order</strong>
+                    <span>{{order.orderNumber}}</span>
+                </div>
+
+                <div>
+                    <strong>Customer</strong>
+                    <span>{{order.customerName}}</span>
+                </div>
+
+                <div>
+                    <strong>Status</strong>
+                    <span>{{order.status}}</span>
+                </div>
+
+            </div>
+
+            <hr>
+
+            @if(ai){
+
+                @switch(ai.state){
+
+                    @case('loading'){
+
+                        <div class="state loading">
+
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+
+                            <span>{{ai.message}}</span>
+
+                        </div>
+
+                    }
+
+                    @case('streaming'){
+
+                        <div class="state streaming">
+
+                            <i class="fa-solid fa-brain"></i>
+
+                            <span>{{ai.message}}</span>
+
+                        </div>
+
+                    }
+
+                    @case('success'){
+
+                        <div class="state success">
+
+                            <i class="fa-solid fa-lightbulb"></i>
+
+                            <span>{{ai.message}}</span>
+
+                        </div>
+
+                    }
+
+                    @case('error'){
+
+                        <div class="state error">
+
+                            <i class="fa-solid fa-circle-exclamation"></i>
+
+                            <span>{{ai.message}}</span>
+
+                            <button
+                                class="btn btn-primary mt-3"
+                                (click)="retry.emit()">
+
+                                Retry
+
+                            </button>
+
+                        </div>
+
+                    }
+
+                }
+
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+}

@@ -1,0 +1,33 @@
+<div class="board-wrapper">
+    <div class="board">
+        <app-order-column
+            title="Received"
+            [orders]="receivedOrders"
+            status="received">
+        </app-order-column>
+
+        <app-order-column
+            title="Preparing"
+            [orders]="preparingOrders"
+            status="preparing">
+        </app-order-column>
+
+        <app-order-column
+            title="Ready"
+            [orders]="readyOrders"
+            status="ready">
+        </app-order-column>
+
+        <app-order-column
+            title="Delivered"
+            [orders]="deliveredOrders"
+            status="delivered">
+        </app-order-column>
+
+        <app-order-column
+            title="Completed"
+            [orders]="completedOrders"
+            status="completed">
+        </app-order-column>
+    </div>
+</div>

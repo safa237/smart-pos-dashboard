@@ -1,0 +1,22 @@
+<button
+    type="button"
+    class="app-btn"
+    [class.primary]="type==='primary'"
+    [class.secondary]="type==='secondary'"
+    [class.danger]="type==='danger'"
+    [disabled]="disabled || loading"
+    (click)="onClick()">
+
+    @if(loading){
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+    } @else if(icon){
+
+        <i [class]="icon"></i>
+
+    }
+
+    <span>{{text}}</span>
+
+</button>

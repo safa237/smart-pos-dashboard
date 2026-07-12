@@ -1,0 +1,73 @@
+<div class="search-box">
+
+    <i class="fa-solid fa-magnifying-glass"></i>
+
+    <input
+
+        [formControl]="control"
+
+        [placeholder]="placeholder"
+
+        (focus)="showDropdown=true"
+
+        (keydown)="onKeyDown($event)">
+
+    @if(showDropdown){
+
+    <div class="dropdown">
+
+        @if(control.value){
+
+            @for(item of filteredSuggestions;let i = $index;track item){
+
+                <div
+
+                    class="item"
+
+                    [class.active]="selectedIndex === i"
+
+                    (click)="select(item)"
+
+                    (mouseenter)="selectedIndex = i">
+
+                    {{item}}
+
+                </div>
+
+            }
+
+        }
+
+        @else {
+
+            <div class="title">
+
+                Recent Searches
+
+            </div>
+
+            @for(item of recentSearches;let i = $index;track item){
+
+                <div
+
+                    class="item"
+
+                    [class.active]="selectedIndex === i"
+
+                    (click)="select(item)"
+
+                    (mouseenter)="selectedIndex = i">
+
+                    {{item}}
+
+                </div>
+
+            }
+
+        }
+
+    </div>
+
+    }
+
+</div>

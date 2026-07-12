@@ -1,0 +1,78 @@
+@if(isOpen){
+
+<div class="dialog-overlay" (click)="close.emit()">
+
+    <div class="dialog" (click)="$event.stopPropagation()">
+
+        <div class="dialog-header">
+
+            <div class="icon">
+
+                <i class="fa-solid fa-dollar-sign"></i>
+
+            </div>
+
+            <div>
+
+                <h4>Update Price</h4>
+
+                <p>{{ product.name }}</p>
+
+            </div>
+
+        </div>
+
+        <div class="price-info">
+
+            <label>Current Price</label>
+
+            <div class="current-price">
+
+                {{ product.price  }}
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>New Price</label>
+
+            <input
+                type="number"
+                [(ngModel)]="newPrice"
+                min="1">
+
+        </div>
+
+        <div class="actions">
+
+    <app-button
+
+        text="Cancel"
+
+        type="secondary"
+
+        icon="fa-solid fa-xmark"
+
+        (clicked)="close.emit()">
+
+    </app-button>
+
+    <app-button
+
+        text="Save"
+
+        icon="fa-solid fa-check"
+
+        (clicked)="savePrice()">
+
+    </app-button>
+
+</div>
+
+    </div>
+
+</div>
+
+}

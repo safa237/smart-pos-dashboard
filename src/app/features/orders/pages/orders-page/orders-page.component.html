@@ -1,0 +1,7 @@
+<section class="orders-page py-3">
+    @if (orders$ | async; as orders) {
+
+    <app-order-board [orders]="orders"></app-order-board>
+
+}
+</section>
